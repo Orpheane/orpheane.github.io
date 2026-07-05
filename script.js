@@ -395,6 +395,34 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 })();
 
+// ── COPY DISCORD TO CLIPBOARD ────────────────────────
+(function initDiscordCopy() {
+  const discordBtn = document.getElementById('discord-btn');
+  if (!discordBtn) return;
+
+  const originalHtml = discordBtn.innerHTML;
+  let resetTimeout;
+
+  discordBtn.addEventListener('click', () => {
+    navigator.clipboard.writeText('Orpheane').then(() => {
+      // Temporarily change button content to show feedback
+      discordBtn.innerHTML = `
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m9 16.17 4.59-4.59L12 10.17l-3 3-1.41-1.41L6.17 13.17 9 16.17zm11-11.8L12 12.17l-2.59-2.59L8 10.99l4 4 10-10-1.63-1.62z"/></svg>
+        Copied!
+      `;
+      discordBtn.style.borderColor = 'var(--teal)';
+      
+      clearTimeout(resetTimeout);
+      resetTimeout = setTimeout(() => {
+        discordBtn.innerHTML = originalHtml;
+        discordBtn.style.borderColor = '';
+      }, 2000);
+    }).catch(err => {
+      console.error('Could not copy text: ', err);
+    });
+  });
+})();
+
 // ── HERO: trigger reveal immediately ─────────────────
 document.querySelectorAll('.hero-section .reveal').forEach(el => {
   setTimeout(() => el.classList.add('visible'), 100);
