@@ -564,14 +564,103 @@ h3 {
 @media (max-width: 760px) { .project-card.featured { grid-column: span 1; } }
 .project-card.hidden { display: none; }
 
-/* Project visuals */
+/* Project Visual container */
 .project-visual {
   position: relative;
   height: 200px;
   overflow: hidden;
-  display: flex; align-items: center; justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.project-card.featured .project-visual { height: 260px; }
+
+/* Project visuals with actual screenshots */
+.project-img-preview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s var(--ease);
+}
+.project-card:hover .project-img-preview {
+  transform: scale(1.05);
+}
+.zoom-icon-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(139, 92, 246, 0.4);
+  opacity: 0;
+  display: grid;
+  place-items: center;
+  transition: opacity 0.3s var(--ease);
+  cursor: pointer;
+  z-index: 2;
+}
+.project-visual:hover .zoom-icon-overlay {
+  opacity: 1;
+}
+.zoom-icon-overlay svg {
+  width: 32px;
+  height: 32px;
+  color: #fff;
+  transform: scale(0.8);
+  transition: transform 0.3s var(--ease-spring);
+}
+.project-visual:hover .zoom-icon-overlay svg {
+  transform: scale(1);
+}
+
+/* Lightbox Modal */
+.lightbox {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 18, 0.95);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s var(--ease);
+}
+.lightbox.open {
+  opacity: 1;
+  pointer-events: all;
+}
+.lightbox-content {
+  max-width: 90vw;
+  max-height: 85vh;
+  transform: scale(0.95);
+  transition: transform 0.3s var(--ease-spring);
+}
+.lightbox.open .lightbox-content {
+  transform: scale(1);
+}
+.lightbox-content img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 85vh;
+  border-radius: var(--r-md);
+  border: 1px solid var(--border);
+  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.5);
+  object-fit: contain;
+}
+.lightbox-close {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  font-size: 2.5rem;
+  color: var(--text-muted);
+  transition: color 0.2s, transform 0.2s;
+  width: 44px; height: 44px;
+  display: grid; place-items: center;
+}
+.lightbox-close:hover {
+  color: #fff;
+  transform: rotate(90deg);
+}
 
 /* Custom Project Gradients */
 .pv-gradient-sandbox { background: linear-gradient(135deg, #2c1b18, #4d2b24, #1b263b); }
