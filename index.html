@@ -76,26 +76,52 @@
       <section class="hero-section" aria-labelledby="hero-title">
         <canvas id="hero-canvas" aria-hidden="true"></canvas>
 
-        <div class="hero-content">
-          <p class="eyebrow reveal">Creative Portfolio · 2026</p>
-          <h1 id="hero-title" class="reveal reveal-delay-1">
-            Art.<br/>
-            <em>Design.</em><br/>
-            Code.
-          </h1>
-          <p class="hero-lead reveal reveal-delay-2">
-            I build worlds with pixels, code, and creativity.<br/>
-            Crafting experiences that feel alive.
-          </p>
-          <div class="hero-ctas reveal reveal-delay-3">
-            <a class="btn btn-primary" href="#projects">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-              View Work
-            </a>
-            <a class="btn btn-ghost" href="#contact">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              Get in touch
-            </a>
+        <div class="hero-grid-container">
+          <div class="hero-content">
+            <p class="eyebrow reveal">Creative Portfolio · 2026</p>
+            <h1 id="hero-title" class="reveal reveal-delay-1">
+              Art.<br/>
+              <em>Design.</em><br/>
+              Create.
+            </h1>
+            <p class="hero-lead reveal reveal-delay-2">
+              I build worlds coming from my imagination with pixels.<br/>
+              Creating experiences that feel alive and unique.
+            </p>
+            <div class="hero-ctas reveal reveal-delay-3">
+              <a class="btn btn-primary" href="#projects">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                View Work
+              </a>
+            </div>
+          </div>
+
+          <!-- Hero right-side slider/carousel -->
+          <div class="hero-slider-wrapper reveal reveal-delay-2">
+            <div class="slider-controls">
+              <button class="slider-btn prev" type="button" aria-label="Previous image">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+              </button>
+              <button class="slider-btn next" type="button" aria-label="Next image">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
+            </div>
+            <div class="hero-slider" id="hero-slider">
+              <div class="slider-track" id="slider-track">
+                <div class="slider-item">
+                  <img src="assets/sneakpeek1.png" alt="Creative artwork sneak peek - Cosmic Fantasy" />
+                  <div class="item-overlay"><span>Cosmic Fantasy</span></div>
+                </div>
+                <div class="slider-item">
+                  <img src="assets/sneakpeek2.png" alt="Creative design sneak peek - Abstract Ribbon" />
+                  <div class="item-overlay"><span>3D Abstract Ribbon</span></div>
+                </div>
+                <div class="slider-item">
+                  <img src="assets/sneakpeek3.png" alt="Creative game design sneak peek - Crystal Ruins" />
+                  <div class="item-overlay"><span>Crystal Ruins Level</span></div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 

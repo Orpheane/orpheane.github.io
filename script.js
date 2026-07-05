@@ -165,7 +165,7 @@ document.querySelectorAll(interactEls).forEach(el => {
     ctx.lineWidth = 1;
     const step = 60;
     for (let x = 0; x < W; x += step) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke(); }
-    for (let y = 0; y < H; y += step) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
+    for (let y = 0; y < H; y += step) { ctx.beginPath(); moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
     ctx.restore();
   }
 
@@ -184,6 +184,32 @@ document.querySelectorAll(interactEls).forEach(el => {
 
   const ro = new ResizeObserver(() => { resize(); buildParticles(); });
   ro.observe(canvas);
+})();
+
+// ── HERO SNEAKPEEK SLIDER ─────────────────────────────
+(function initHeroSlider() {
+  const track = document.getElementById('slider-track');
+  const prevBtn = document.querySelector('.slider-btn.prev');
+  const nextBtn = document.querySelector('.slider-btn.next');
+  if (!track || !prevBtn || !nextBtn) return;
+
+  const itemsCount = track.children.length;
+  let currentIndex = 0;
+
+  function updateSlider() {
+    const translateVal = -(currentIndex * 33.333);
+    track.style.transform = `translateX(${translateVal}%)`;
+  }
+
+  prevBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + itemsCount) % itemsCount;
+    updateSlider();
+  });
+
+  nextBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % itemsCount;
+    updateSlider();
+  });
 })();
 
 // ── CONTACT CANVAS — Flowing Lines ────────────────────
@@ -261,7 +287,7 @@ const skillObs = new IntersectionObserver((entries) => {
 skillFills.forEach(el => skillObs.observe(el));
 
 // ── PROJECT FILTERS ───────────────────────────────────
-const filterBtns   = document.querySelectorAll('.filter-btn');
+const filterBtns = document.querySelectorAll('.filter-btn');
 const projectCards = document.querySelectorAll('.project-card');
 
 filterBtns.forEach(btn => {
