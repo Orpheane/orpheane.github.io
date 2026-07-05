@@ -843,16 +843,10 @@ h3 {
   background-color: var(--teal);
   border-radius: 50%;
   box-shadow: 0 0 8px var(--teal);
-  animation: counter-pulse 2s infinite ease-in-out;
 }
 .counter-value {
   color: var(--text);
   font-weight: 700; /* Bold */
-}
-
-@keyframes counter-pulse {
-  0%, 100% { opacity: 0.4; transform: scale(0.9); }
-  50% { opacity: 1; transform: scale(1.1); }
 }
 
 /* ── REVEAL ANIMATIONS ───────────────────────────────── */
