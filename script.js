@@ -165,7 +165,7 @@ document.querySelectorAll(interactEls).forEach(el => {
     ctx.lineWidth = 1;
     const step = 60;
     for (let x = 0; x < W; x += step) { ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke(); }
-    for (let y = 0; y < H; y += step) { ctx.beginPath(); moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
+    for (let y = 0; y < H; y += step) { ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke(); }
     ctx.restore();
   }
 
