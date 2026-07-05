@@ -428,44 +428,21 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   const counterVal = document.getElementById('counter-value');
   if (!counterVal) return;
 
-  // We fetch a dynamic shields.io SVG badge which acts as a proxy for the CounterAPI count.
-  // Because it goes through img.shields.io, it is never blocked by adblockers or Firefox tracking protection.
-  const proxyUrl = 'https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fapi.counterapi.dev%2Fv1%2Forpheane%2Fportfolio%2Fup&query=%24.count&label=';
-
-  fetch(proxyUrl)
+  fetch('https://countapi.mileshilliard.com/api/v1/hit/orpheane-portfolio-2026')
     .then(response => {
-      if (!response.ok) throw new Error('Failed to fetch badge');
-      return response.text();
+      if (!response.ok) throw new Error('Network response was not ok');
+      return response.json();
     })
-    .then(svgText => {
-      const parser = new DOMParser();
-      const doc = parser.parseFromString(svgText, 'image/svg+xml');
-      const textNodes = doc.getElementsByTagName('text');
-      if (textNodes.length > 0) {
-        // The last text node inside Shields.io SVG contains the raw count value
-        const countValue = textNodes[textNodes.length - 1].textContent;
-        // Format with commas if it is a number
-        const num = parseInt(countValue.replace(/,/g, ''), 10);
-        counterVal.textContent = isNaN(num) ? countValue : num.toLocaleString();
+    .then(data => {
+      if (data && typeof data.value === 'number') {
+        counterVal.textContent = data.value.toLocaleString();
       } else {
         counterVal.textContent = '—';
       }
     })
     .catch(err => {
       console.warn('Visitor counter error:', err);
-      // Fallback: make a silent direct fetch just in case adblock is disabled
-      fetch('https://api.counterapi.dev/v1/orpheane/portfolio/up')
-        .then(r => r.json())
-        .then(data => {
-          if (data && typeof data.count === 'number') {
-            counterVal.textContent = data.count.toLocaleString();
-          } else {
-            counterVal.textContent = '—';
-          }
-        })
-        .catch(() => {
-          counterVal.textContent = '—';
-        });
+      counterVal.textContent = '—';
     });
 })();
 
