@@ -845,9 +845,10 @@ h3 {
   box-shadow: 0 0 8px var(--teal);
   animation: counter-pulse 2s infinite ease-in-out;
 }
-.counter-value {
-  color: var(--text);
-  font-weight: 600;
+.counter-badge {
+  height: 18px;
+  border-radius: 2px;
+  display: block;
 }
 
 @keyframes counter-pulse {

@@ -423,30 +423,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 })();
 
-// ── VISITOR COUNTER ──────────────────────────────────
-(function initVisitorCounter() {
-  const counterVal = document.getElementById('counter-value');
-  if (!counterVal) return;
-
-  fetch('https://api.counterapi.dev/v1/orpheane/portfolio/up')
-    .then(response => {
-      if (!response.ok) throw new Error('Network response was not ok');
-      return response.json();
-    })
-    .then(data => {
-      if (data && typeof data.count === 'number') {
-        // Format the count with commas if large
-        counterVal.textContent = data.count.toLocaleString();
-      } else {
-        counterVal.textContent = '—';
-      }
-    })
-    .catch(err => {
-      console.warn('Visitor counter error:', err);
-      counterVal.textContent = 'Err: ' + err.message;
-    });
-})();
-
 // ── HERO: trigger reveal immediately ─────────────────
 document.querySelectorAll('.hero-section .reveal').forEach(el => {
   setTimeout(() => el.classList.add('visible'), 100);
