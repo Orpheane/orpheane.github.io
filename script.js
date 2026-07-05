@@ -193,12 +193,22 @@ document.querySelectorAll(interactEls).forEach(el => {
   const nextBtn = document.querySelector('.slider-btn.next');
   if (!track || !prevBtn || !nextBtn) return;
 
-  const itemsCount = track.children.length;
+  const items = Array.from(track.children);
+  const itemsCount = items.length;
   let currentIndex = 0;
 
   function updateSlider() {
     const translateVal = -(currentIndex * 33.333);
     track.style.transform = `translateX(${translateVal}%)`;
+    
+    // Pause all videos when we slide to another item
+    items.forEach(item => {
+      const video = item.querySelector('video');
+      if (video) {
+        video.pause();
+        video.currentTime = 0;
+      }
+    });
   }
 
   prevBtn.addEventListener('click', () => {
@@ -209,6 +219,23 @@ document.querySelectorAll(interactEls).forEach(el => {
   nextBtn.addEventListener('click', () => {
     currentIndex = (currentIndex + 1) % itemsCount;
     updateSlider();
+  });
+
+  // Play on hover, pause on mouse leave
+  items.forEach(item => {
+    const video = item.querySelector('video');
+    if (!video) return;
+
+    // Enable pointer-events for the hover area but ignore them on the video itself
+    item.style.cursor = 'pointer';
+
+    item.addEventListener('mouseenter', () => {
+      video.play().catch(err => console.log("Video play deferred:", err));
+    });
+
+    item.addEventListener('mouseleave', () => {
+      video.pause();
+    });
   });
 })();
 
