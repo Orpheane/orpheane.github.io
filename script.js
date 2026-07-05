@@ -443,7 +443,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     })
     .catch(err => {
       console.warn('Visitor counter error:', err);
-      counterVal.textContent = '—';
+      counterVal.textContent = 'Err: ' + err.message;
     });
 })();
 
