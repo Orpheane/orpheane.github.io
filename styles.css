@@ -815,13 +815,45 @@ h3 {
 .site-footer {
   background: var(--bg-2);
   border-top: 1px solid var(--border);
-  padding: 2rem 2.5rem;
+  padding: 2.5rem 2.5rem;
   text-align: center;
   font-size: 0.88rem;
   color: var(--text-faint);
 }
 .site-footer strong { color: var(--text-muted); }
 .footer-sub { font-size: 0.8rem; margin-top: 0.3rem; }
+
+/* Visitor Counter */
+.visitor-counter {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 1.25rem;
+  padding: 0.35rem 0.9rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--r-sm);
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--text-muted);
+}
+.counter-dot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--teal);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--teal);
+  animation: counter-pulse 2s infinite ease-in-out;
+}
+.counter-value {
+  color: var(--text);
+  font-weight: 600;
+}
+
+@keyframes counter-pulse {
+  0%, 100% { opacity: 0.4; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.1); }
+}
 
 /* ── REVEAL ANIMATIONS ───────────────────────────────── */
 .reveal {
