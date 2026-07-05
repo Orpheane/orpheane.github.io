@@ -572,10 +572,14 @@ h3 {
   display: flex; align-items: center; justify-content: center;
 }
 .project-card.featured .project-visual { height: 260px; }
-.pv-gradient-1 { background: linear-gradient(135deg, #1a0533, #2d1b69, #0d1f4c); }
-.pv-gradient-2 { background: linear-gradient(135deg, #1f0d2d, #3d0f37, #0f0a1a); }
-.pv-gradient-3 { background: linear-gradient(135deg, #0a1a2d, #0d2f3d, #0a0f1a); }
-.pv-gradient-4 { background: linear-gradient(135deg, #1a1a0d, #2d2608, #0f1a1a); }
+
+/* Custom Project Gradients */
+.pv-gradient-sandbox { background: linear-gradient(135deg, #2c1b18, #4d2b24, #1b263b); }
+.pv-gradient-rift { background: linear-gradient(135deg, #120024, #2a0845, #004e92); }
+.pv-gradient-slasher { background: linear-gradient(135deg, #1f0000, #4a0000, #31004a); }
+.pv-gradient-emilie { background: linear-gradient(135deg, #0f1c1b, #193c39, #1b1622); }
+.pv-gradient-aquarium { background: linear-gradient(135deg, #061e2b, #004b6e, #0e302f); }
+.pv-gradient-ear { background: linear-gradient(135deg, #1c0f2b, #43195d, #491329); }
 
 .pv-shape {
   position: absolute;
