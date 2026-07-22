@@ -797,19 +797,16 @@ h3 {
   border-radius: var(--r-md);
   font-size: 0.95rem;
   font-weight: 600;
-  background: var(--surface-strong);
-  border: 1px solid var(--border);
-  color: var(--text);
-  transition: background 0.2s, border-color 0.2s, transform 0.25s var(--ease-spring);
+  background: var(--grad-hero);
+  border: 1px solid transparent;
+  color: #fff;
+  transition: background 0.2s, border-color 0.2s, transform 0.25s var(--ease-spring), box-shadow 0.25s var(--ease);
 }
 .contact-chip svg { width: 18px; height: 18px; }
 .contact-chip:hover {
-  border-color: rgba(139,92,246,0.5);
-  background: var(--surface-strong);
   transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(139,92,246,0.45);
 }
-.contact-chip:first-child { background: var(--grad-hero); color: #fff; border-color: transparent; }
-.contact-chip:first-child:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(139,92,246,0.45); }
 
 .wishlist-banner-wrapper {
   margin-top: 2.2rem;
