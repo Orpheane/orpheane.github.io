@@ -811,6 +811,33 @@ h3 {
 .contact-chip:first-child { background: var(--grad-hero); color: #fff; border-color: transparent; }
 .contact-chip:first-child:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(139,92,246,0.45); }
 
+.wishlist-banner-wrapper {
+  margin-top: 2.2rem;
+  display: flex;
+  justify-content: center;
+}
+.wishlist-banner-wrapper a {
+  display: inline-block;
+  max-width: 680px;
+  width: 100%;
+  border-radius: var(--r-md);
+  overflow: hidden;
+}
+.wishlist-banner-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: var(--r-md);
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transition: transform 0.35s var(--ease-spring), box-shadow 0.35s var(--ease), border-color 0.35s var(--ease);
+}
+.wishlist-banner-wrapper a:hover .wishlist-banner-img {
+  transform: translateY(-4px) scale(1.015);
+  box-shadow: 0 16px 40px rgba(236, 72, 153, 0.3);
+  border-color: rgba(236, 72, 153, 0.5);
+}
+
 /* ── FOOTER ──────────────────────────────────────────── */
 .site-footer {
   background: var(--bg-2);
