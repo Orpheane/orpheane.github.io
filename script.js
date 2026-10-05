@@ -197,8 +197,14 @@ document.querySelectorAll(interactEls).forEach(el => {
   const itemsCount = items.length;
   let currentIndex = 0;
 
+  // Dynamically set track and item dimensions
+  track.style.width = `${itemsCount * 100}%`;
+  items.forEach(item => {
+    item.style.width = `${100 / itemsCount}%`;
+  });
+
   function updateSlider() {
-    const translateVal = -(currentIndex * 33.333);
+    const translateVal = -(currentIndex * (100 / itemsCount));
     track.style.transform = `translateX(${translateVal}%)`;
     
     // Pause all videos when we slide to another item
